@@ -34,7 +34,7 @@ export const LogoComplete = ({
 				r="26"
 				cx="26"
 				cy="26"
-				fill={colors.white}
+				fill={colors.light}
 				mask="url(#loader--path-mask)"
 			/>
 			<mask id="loader--path-mask">

@@ -36,7 +36,7 @@ export const ExplosionLine = ({
 			<div
 				style={{
 					position: 'absolute',
-					backgroundColor: colors.white,
+					backgroundColor: colors.light,
 					height: `${stretch}px`,
 					top: `${distance}px`,
 					opacity: explosionLineOpacity,

@@ -34,7 +34,7 @@ export const LogoPath = ({
 					width: '377px',
 					height: '329px',
 					fill: 'none',
-					stroke: colors.white,
+					stroke: colors.light,
 					strokeWidth: '4px',
 					strokeDasharray: `${strokeDash} 1000`,
 					strokeLinecap: 'round',

@@ -179,7 +179,7 @@ export const CirceAnimation = ({circleStyle, colors}: CircleAnimationProps) => {
 						opacity,
 					}}
 					svgStyle={{
-						stroke: colors.red,
+						stroke: colors.tertiary,
 						strokeWidth: '6',
 						strokeLinecap: 'round',
 					}}
