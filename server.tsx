@@ -18,7 +18,7 @@ import path from 'path';
 
 const app = express();
 const port = 8000;
-const compositionId = 'HelloWorld';
+const compositionId = 'Comp';
 
 const cache = new Map<string, string>();
 
@@ -35,7 +35,13 @@ app.get('/', async (req, res) => {
 			sendFile(cache.get(JSON.stringify(req.query)) as string);
 			return;
 		}
-		const bundled = await bundle(path.join(__dirname, './src/index.tsx'));
+		
+		const bundled = await bundle(
+			path.join(__dirname, './src/index.tsx'),
+			() => {
+				null;
+			}
+		);
 		const comps = await getCompositions(bundled);
 		const video = comps.find((c) => c.id === compositionId);
 		if (!video) {

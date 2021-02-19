@@ -1,8 +1,13 @@
 import {Easing} from 'remotion';
 import {useKeyframes} from '../helper/use-keyframes';
+import {HEXColors} from '../logo-composition';
 import {LogoPath} from './logo-path';
 
-export const LogoLowerDash = () => {
+type LogoLowerDashProps = {
+	colors: HEXColors;
+};
+
+export const LogoLowerDash = ({colors}: LogoLowerDashProps) => {
 	// Dash offset animation
 
 	const [strokeDashoffset] = useKeyframes(
@@ -34,6 +39,7 @@ export const LogoLowerDash = () => {
 
 	return (
 		<LogoPath
+			colors={colors}
 			strokeDash={strokeDash}
 			strokeDashoffset={strokeDashoffset}
 			wrapperStyle={{position: 'absolute', width: '100%', height: '100%'}}

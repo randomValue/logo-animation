@@ -1,15 +1,18 @@
 import {CSSProperties} from 'react';
+import {HEXColors} from '../logo-composition';
 
 type LogoPathTypes = {
 	strokeDash: number;
 	strokeDashoffset: number;
 	wrapperStyle: CSSProperties;
+	colors: HEXColors;
 };
 
 export const LogoPath = ({
 	strokeDash,
 	strokeDashoffset,
 	wrapperStyle,
+	colors,
 }: LogoPathTypes) => {
 	return (
 		<div
@@ -31,8 +34,8 @@ export const LogoPath = ({
 					width: '377px',
 					height: '329px',
 					fill: 'none',
-					stroke: '#ffffff',
-					strokeWidth: '8px',
+					stroke: colors.white,
+					strokeWidth: '4px',
 					strokeDasharray: `${strokeDash} 1000`,
 					strokeLinecap: 'round',
 					strokeDashoffset,

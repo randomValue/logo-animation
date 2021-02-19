@@ -1,11 +1,13 @@
 import {CSSProperties, PropsWithChildren} from 'react';
 import {Easing} from 'remotion';
 import {useKeyframes} from '../helper/use-keyframes';
+import {HEXColors} from '../logo-composition';
 import {LogoComplete} from './logo-complete';
 import {LogoText} from './logo-text';
 
-type CirceAnimationProps = {
+type CircleAnimationProps = {
 	circleStyle?: CSSProperties;
+	colors: HEXColors;
 };
 type CircleProps = {
 	circleStyle?: CSSProperties;
@@ -65,7 +67,7 @@ const RenderCircle = ({
 	);
 };
 
-export const CirceAnimation = ({circleStyle}: CirceAnimationProps) => {
+export const CirceAnimation = ({circleStyle, colors}: CircleAnimationProps) => {
 	const circleEasing = [
 		{easing: Easing.bezier(0, 0.63, 0, 1)},
 		{easing: Easing.bezier(0.48, 0, 1, 0.63)},
@@ -116,12 +118,13 @@ export const CirceAnimation = ({circleStyle}: CirceAnimationProps) => {
 			<LogoText
 				logoStyles={{
 					opacity: textOpacity,
-					fill: '#ffffff',
+					fill: colors.light,
 					top: `${offsetText}px`,
 				}}
 			/>
 			<div style={{position: 'absolute', top: `${offsetCircle}px`}}>
 				<LogoComplete
+					colors={colors}
 					circleStyles={{
 						width: `${circleScale}px`,
 						height: `${circleScale}px`,
@@ -148,7 +151,7 @@ export const CirceAnimation = ({circleStyle}: CirceAnimationProps) => {
 						opacity,
 					}}
 					svgStyle={{
-						stroke: '#ffffff',
+						stroke: colors.light,
 						strokeWidth: '4',
 						strokeLinecap: 'round',
 					}}
@@ -162,7 +165,7 @@ export const CirceAnimation = ({circleStyle}: CirceAnimationProps) => {
 						opacity,
 					}}
 					svgStyle={{
-						stroke: '#ffffff',
+						stroke: colors.light,
 						strokeWidth: '4',
 						strokeLinecap: 'round',
 					}}
@@ -176,7 +179,7 @@ export const CirceAnimation = ({circleStyle}: CirceAnimationProps) => {
 						opacity,
 					}}
 					svgStyle={{
-						stroke: 'black',
+						stroke: colors.red,
 						strokeWidth: '6',
 						strokeLinecap: 'round',
 					}}

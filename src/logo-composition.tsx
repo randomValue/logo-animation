@@ -1,12 +1,28 @@
 import React from 'react';
 import {Sequence} from 'remotion';
+import colors from './colors/colors.json';
+import {hexToRgb} from './helper/hexToRgb';
 import {useKeyframes} from './helper/use-keyframes';
 import {CirceAnimation} from './logo-animation/circe-animation';
 import {ExplosionLine} from './logo-animation/explosion-line';
 import {LogoLowerDash} from './logo-animation/logo-lower-dash';
 import {LogoUpperDash} from './logo-animation/logo-upper-dash';
 
+export type RGBColors = {
+	[key: string]: {
+		[key: string]: number;
+	};
+};
+export type HEXColors = typeof colors;
+
 export const LogoComposition = () => {
+	const {primary, secondary, red, dark} = Object.entries(colors).reduce(
+		(acc, [key, value]) => {
+			acc = {...acc, [`${key}`]: hexToRgb(value)};
+			return acc;
+		},
+		{} as RGBColors
+	);
 	const [r, g, b] = useKeyframes(
 		[
 			[20, 21],
@@ -15,19 +31,19 @@ export const LogoComposition = () => {
 		],
 		[
 			[
-				[34, 68],
-				[84, 28],
-				[102, 127],
+				[primary.r, secondary.r],
+				[primary.g, secondary.g],
+				[primary.b, secondary.b],
 			],
 			[
-				[68, 99],
-				[28, 31],
-				[127, 51],
+				[secondary.r, red.r],
+				[secondary.g, red.g],
+				[secondary.b, red.b],
 			],
 			[
-				[99, 35],
-				[31, 35],
-				[51, 35],
+				[red.r, dark.r],
+				[red.g, dark.g],
+				[red.b, dark.b],
 			],
 		]
 	);
@@ -42,6 +58,7 @@ export const LogoComposition = () => {
 		>
 			<Sequence from={21} durationInFrames={6}>
 				<ExplosionLine
+					colors={colors}
 					explosionWrapperStyle={{
 						left: '49%',
 						top: '48.6%',
@@ -53,6 +70,7 @@ export const LogoComposition = () => {
 					}}
 				/>
 				<ExplosionLine
+					colors={colors}
 					explosionWrapperStyle={{
 						left: '49%',
 						top: '48.6%',
@@ -66,6 +84,7 @@ export const LogoComposition = () => {
 			</Sequence>
 			<Sequence from={22} durationInFrames={6}>
 				<ExplosionLine
+					colors={colors}
 					explosionWrapperStyle={{
 						left: '49%',
 						top: '48.6%',
@@ -77,6 +96,7 @@ export const LogoComposition = () => {
 					}}
 				/>
 				<ExplosionLine
+					colors={colors}
 					explosionWrapperStyle={{
 						left: '49%',
 						top: '48.6%',
@@ -89,13 +109,13 @@ export const LogoComposition = () => {
 				/>
 			</Sequence>
 			<Sequence from={0} durationInFrames={35}>
-				<LogoLowerDash />
+				<LogoLowerDash colors={colors} />
 			</Sequence>
 			<Sequence from={0} durationInFrames={35}>
-				<LogoUpperDash />
+				<LogoUpperDash colors={colors} />
 			</Sequence>
 			<Sequence from={35} durationInFrames={75}>
-				<CirceAnimation />
+				<CirceAnimation colors={colors} />
 			</Sequence>
 		</div>
 	);

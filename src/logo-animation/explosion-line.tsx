@@ -1,14 +1,17 @@
 import {CSSProperties} from 'react';
 import {Easing} from 'remotion';
 import {useKeyframes} from '../helper/use-keyframes';
+import {HEXColors} from '../logo-composition';
 
 type ExplosionLineProps = {
 	explosionWrapperStyle?: CSSProperties;
 	explosionLineStyle?: CSSProperties;
+	colors: HEXColors;
 };
 export const ExplosionLine = ({
 	explosionWrapperStyle,
 	explosionLineStyle,
+	colors,
 }: ExplosionLineProps) => {
 	const [distance, stretch] = useKeyframes(
 		[[0, 6]],
@@ -33,7 +36,7 @@ export const ExplosionLine = ({
 			<div
 				style={{
 					position: 'absolute',
-					backgroundColor: '#ffffff',
+					backgroundColor: colors.white,
 					height: `${stretch}px`,
 					top: `${distance}px`,
 					opacity: explosionLineOpacity,
